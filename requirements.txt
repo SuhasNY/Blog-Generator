@@ -1,9 +1,8 @@
-huggingface_hub
-openai==0.28.0
+openai>=1.0.0
+streamlit>=1.0.0
 sentence-transformers
 uvicorn
 ctransformers
 langchain-community
 langchain-core
 python-box
-streamlit
