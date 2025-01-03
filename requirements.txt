@@ -1,6 +1,6 @@
-sentence-transformers
-uvicorn
-ctransformers
-langchain
-python-box
-streamlit
+sentence-transformers==2.2.2
+uvicorn[standard]==0.22.0
+ctransformers>=0.2.16
+langchain==0.0.290
+python-box==7.0.1
+streamlit==1.25.0
