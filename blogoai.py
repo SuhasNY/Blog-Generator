@@ -1,6 +1,7 @@
 import openai
 import streamlit as st
 
+# Set up OpenAI API key (using Streamlit secrets)
 openai.api_key = st.secrets["openai"]["api_key"]
 
 # Function to generate blog content based on topic
@@ -9,19 +10,19 @@ def generate_blog(topic):
     prompt = f"Write a comprehensive and well-structured blog article about '{topic}'. Include an introduction, detailed sections, and a conclusion. Make sure to keep the tone engaging and informative."
 
     try:
-        # API call to OpenAI to generate content
-        response = openai.Completion.create(
-            engine="text-davinci-003",  # Or another model like GPT-4
-            prompt=prompt,
-            max_tokens=1500,  # You can increase the token limit for longer articles
+        # API call to OpenAI to generate content using the new chat-based model
+        response = openai.chat.Completion.create(
+            model="gpt-3.5-turbo",  # You can also use "gpt-4" if you have access to GPT-4
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=1500,  # You can adjust the token limit for longer articles
             temperature=0.7,  # Adjust creativity level
-            top_p=1.0,
-            frequency_penalty=0.0,
-            presence_penalty=0.0
         )
 
-        # Return the generated text (remove extra whitespace)
-        return response.choices[0].text.strip()
+        # Return the generated text
+        return response['choices'][0]['message']['content'].strip()
 
     except Exception as e:
         # Handle errors (e.g., API errors)
