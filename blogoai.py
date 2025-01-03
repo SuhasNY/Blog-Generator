@@ -2,7 +2,7 @@ import openai
 import streamlit as st
 
 # Set up OpenAI API key (replace with your own key)
-openai.api_key = 'your-api-key-here'
+openai.api_key = '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'
 
 # Function to generate blog content based on topic
 def generate_blog(topic):
