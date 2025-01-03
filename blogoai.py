@@ -10,19 +10,16 @@ def generate_blog(topic):
     prompt = f"Write a comprehensive and well-structured blog article about '{topic}'. Include an introduction, detailed sections, and a conclusion. Make sure to keep the tone engaging and informative."
 
     try:
-        # API call to OpenAI to generate content using the new chat-based model
-        response = openai.ChatCompletion.create(
+        # API call to OpenAI to generate content using the new API
+        response = openai.Completion.create(  # Updated API method here
             model="gpt-3.5-turbo",  # You can also use "gpt-4" if you have access to GPT-4
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": prompt}
-            ],
+            prompt=prompt,
             max_tokens=1500,  # You can adjust the token limit for longer articles
             temperature=0.7,  # Adjust creativity level
         )
 
         # Return the generated text
-        return response['choices'][0]['message']['content'].strip()
+        return response.choices[0].text.strip()
 
     except Exception as e:
         # Handle errors (e.g., API errors)
