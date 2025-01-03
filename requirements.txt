@@ -2,6 +2,7 @@ openai==0.28.0
 sentence-transformers
 uvicorn
 ctransformers
-langchain
+langchain-community
+langchain-core
 python-box
 streamlit
