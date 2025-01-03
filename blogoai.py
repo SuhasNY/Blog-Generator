@@ -11,7 +11,7 @@ def generate_blog(topic):
 
     try:
         # API call to OpenAI to generate content using the new chat-based model
-        response = openai.chat.Completion.create(
+        response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",  # You can also use "gpt-4" if you have access to GPT-4
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
